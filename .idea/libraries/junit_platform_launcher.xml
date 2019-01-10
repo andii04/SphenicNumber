@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="junit-platform-launcher">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/junit-platform-launcher.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
