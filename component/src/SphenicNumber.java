@@ -36,16 +36,22 @@ public class SphenicNumber {
 
             }
         }
+
+        BigInteger one = b.get(0);
+        BigInteger two = b.get(1);
+        BigInteger three = b.get(2);
         //for(BigInteger numb:b)
-        for(int i = 0;i<b.size()-2;i++)
+        for(int i = 1;i<=b.size()+15;i++)
         {
-            BigInteger one = b.get(0);
-            //System.out.println(b.get(i));
-            BigInteger two = b.get(1);
-            BigInteger three = b.get(2);
+
 
             result = one.multiply(two).multiply(three);
             SphenicList.add(result);
+
+            one = b.get(i);
+            two = b.get(i+1);
+            three = b.get(i+1);
+
 
         }
         System.out.println(b);
