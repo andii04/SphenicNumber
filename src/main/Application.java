@@ -15,7 +15,7 @@ public class Application {
         try {
             Method method = port.getClass().getDeclaredMethod("execute", BigInteger.class, BigInteger.class);
             System.out.println(method);
-            BigInteger value01 = new BigInteger("3");
+            BigInteger value01 = new BigInteger("1");
             BigInteger value02 = new BigInteger("50");
             method.invoke(port,value01,value02);
         } catch (Exception e) {

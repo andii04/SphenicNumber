@@ -33,22 +33,26 @@ public class SphenicNumber {
             if(checkPrime(min)==true)
             {
                 b.add(min);
-                SphenicList.add(min);
+
             }
         }
-        for(BigInteger numb:b)
+        //for(BigInteger numb:b)
+        for(int i = 0;i<b.size()-2;i++)
         {
             BigInteger one = b.get(0);
+            //System.out.println(b.get(i));
             BigInteger two = b.get(1);
             BigInteger three = b.get(2);
 
             result = one.multiply(two).multiply(three);
+            SphenicList.add(result);
+
         }
         System.out.println(b);
         System.out.println("");
         System.out.println(SphenicList);
         System.out.println(result);
-        return b;
+        return SphenicList;
     }
 
 
