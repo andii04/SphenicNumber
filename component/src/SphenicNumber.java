@@ -12,7 +12,6 @@ public class SphenicNumber {
     }
 
     ArrayList<BigInteger> distinctPrimes = new ArrayList<>();
-    ArrayList<BigInteger> SphenicList = new ArrayList<>();
     // define port
 
     public Port port;
@@ -23,27 +22,27 @@ public class SphenicNumber {
 
     private ArrayList<BigInteger> calculateSphenicNumber(BigInteger rangeFrom, BigInteger rangeTo)
     {
-
-        ArrayList<BigInteger> b = getDistinctPrimes(rangeFrom);
         BigInteger min = rangeFrom;
         BigInteger max = rangeTo;
-        BigInteger count = rangeFrom;
-        BigInteger counter = BigInteger.ZERO;
+        ArrayList<BigInteger>b = new ArrayList<>();
+        ArrayList<BigInteger>SphenicList = new ArrayList<>();
 
-        while(count.compareTo(max)>=0)
+        for(;min.compareTo(max)<=0;min = min.add(BigInteger.ONE))
         {
-            //BigInteger distinctone = BigInteger.valueOf(b.get(1));
-            //BigInteger distincttwo = BigInteger.valueOf(b.get(2));
-            //BigInteger distinctthree = BigInteger.valueOf(b.get(3));
-            //SphenicList.add((distinctone.multiply(distincttwo).multiply(distinctthree)));
-            counter.add(BigInteger.ONE);
-            count.add(BigInteger.ONE);
+            if(checkPrime(min)==true)
+            {
+                b.add(getNextPrime(min));
+            }
+
+
+
         }
+        System.out.println(b);
 
 
 
 
-        return SphenicList;
+        return b;
     }
 
 
@@ -65,7 +64,7 @@ public class SphenicNumber {
         while (!number.equals(BigInteger.ONE)){
             if(number.mod(count).equals(BigInteger.ZERO)){
                 number = number.divide(count);
-                if(!distinctPrimes.contains(count.intValue())) distinctPrimes.add(BigInteger.valueOf(count.intValue()));
+                if(!distinctPrimes.contains(BigInteger.valueOf(count.intValue()))) distinctPrimes.add(BigInteger.valueOf(count.intValue()));
 
                 continue;
             }
@@ -105,8 +104,9 @@ public class SphenicNumber {
 
             ArrayList<BigInteger> SphenicNumber = new ArrayList<>();
             //System.out.println("execute methode");
-            System.out.println(SphenicList);
+
             return calculateSphenicNumber(rangeFrom, rangeTo);
+
         }
     }
 }
