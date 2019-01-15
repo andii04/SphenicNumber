@@ -11,6 +11,8 @@ public class SphenicNumber {
         return instance;
     }
 
+    ArrayList<BigInteger> distinctPrimes = new ArrayList<>();
+    ArrayList<BigInteger> SphenicList = new ArrayList<>();
     // define port
 
     public Port port;
@@ -22,24 +24,26 @@ public class SphenicNumber {
     private ArrayList<BigInteger> calculateSphenicNumber(BigInteger rangeFrom, BigInteger rangeTo)
     {
 
-        ArrayList<BigInteger> SphenicNumbers = new ArrayList<>();
+        ArrayList<BigInteger> b = getDistinctPrimes(rangeFrom);
+        BigInteger min = rangeFrom;
+        BigInteger max = rangeTo;
+        BigInteger count = rangeFrom;
+        BigInteger counter = BigInteger.ZERO;
 
-
-        for(;rangeFrom.compareTo(rangeTo)<=0; rangeFrom = rangeFrom.add(BigInteger.ONE))
+        while(count.compareTo(max)>=0)
         {
-            BigInteger temp = new BigInteger("1");
-            for (BigInteger i = new BigInteger("2"); i.compareTo(rangeFrom)<=0 ; i = i.add(BigInteger.ONE)) {
-                temp = temp.multiply(i);
-            }
-            if (checkPrime(temp.add(BigInteger.ONE))|| checkPrime(temp.subtract(BigInteger.ONE)))
-            {
-                System.out.println(rangeFrom);
-                SphenicNumbers.add(rangeFrom);
-            }
-
+            //BigInteger distinctone = BigInteger.valueOf(b.get(1));
+            //BigInteger distincttwo = BigInteger.valueOf(b.get(2));
+            //BigInteger distinctthree = BigInteger.valueOf(b.get(3));
+            //SphenicList.add((distinctone.multiply(distincttwo).multiply(distinctthree)));
+            counter.add(BigInteger.ONE);
+            count.add(BigInteger.ONE);
         }
 
-        return null;
+
+
+
+        return SphenicList;
     }
 
 
@@ -54,14 +58,14 @@ public class SphenicNumber {
     }
 
     //sucht die Distincten Primzahlen und gibt diese zurueck
-    private ArrayList<Integer> getDistinctPrimes(BigInteger number){
-        ArrayList<Integer> distinctPrimes = new ArrayList<>();
+    private ArrayList<BigInteger> getDistinctPrimes(BigInteger number){
+        //ArrayList<Integer> distinctPrimes = new ArrayList<>();
         BigInteger count = new BigInteger("2");
 
         while (!number.equals(BigInteger.ONE)){
             if(number.mod(count).equals(BigInteger.ZERO)){
                 number = number.divide(count);
-                if(!distinctPrimes.contains(count.intValue())) distinctPrimes.add(count.intValue());
+                if(!distinctPrimes.contains(count.intValue())) distinctPrimes.add(BigInteger.valueOf(count.intValue()));
 
                 continue;
             }
@@ -73,6 +77,7 @@ public class SphenicNumber {
         return distinctPrimes;
     }
 
+    //prueft ob uebergebene Zahl eine Primzahl ist
     private boolean checkPrime(BigInteger number){
         //check via BigInteger.isProbablePrime(certainty)
         if (!number.isProbablePrime(5))
@@ -91,6 +96,7 @@ public class SphenicNumber {
         return true;
     }
 
+
     public class Port implements ISphenicNumber {
 
 
@@ -99,6 +105,7 @@ public class SphenicNumber {
 
             ArrayList<BigInteger> SphenicNumber = new ArrayList<>();
             //System.out.println("execute methode");
+            System.out.println(SphenicList);
             return calculateSphenicNumber(rangeFrom, rangeTo);
         }
     }
