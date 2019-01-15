@@ -22,6 +22,7 @@ public class SphenicNumber {
 
     private ArrayList<BigInteger> calculateSphenicNumber(BigInteger rangeFrom, BigInteger rangeTo)
     {
+        BigInteger result=BigInteger.ZERO;
         BigInteger min = rangeFrom;
         BigInteger max = rangeTo;
         ArrayList<BigInteger>b = new ArrayList<>();
@@ -31,17 +32,22 @@ public class SphenicNumber {
         {
             if(checkPrime(min)==true)
             {
-                b.add(getNextPrime(min));
+                b.add(min);
+                SphenicList.add(min);
             }
+        }
+        for(BigInteger numb:b)
+        {
+            BigInteger one = b.get(0);
+            BigInteger two = b.get(1);
+            BigInteger three = b.get(2);
 
-
-
+            result = one.multiply(two).multiply(three);
         }
         System.out.println(b);
-
-
-
-
+        System.out.println("");
+        System.out.println(SphenicList);
+        System.out.println(result);
         return b;
     }
 
